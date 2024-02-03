@@ -1,6 +1,23 @@
 {
-    "Men": ["New Releases", "Bestsellers", "Members Exclusive"],
-    "Women": ["New Releases", "Bestsellers", "Members Exclusive"],
-    "Kids": ["New Releases", "Bestsellers", "Members Exclusive"]
+    "New & Featured": {
+        "Featured": ["New Releases", "Bestsellers", "dummy","dummy","dummy"],
+        "Bestsellers": ["dummy","dummy","dummy","dummy"],
+        "Members Exclusive": ["dummy","dummy","dummy","dummy"]
+    },
+    "Men": {
+        "Featured": ["Men New Releases", "Bestsellers", "dummy","dummy","dummy"],
+        "Bestsellers": ["dummy","dummy","dummy","dummy"],
+        "Members Exclusive": ["dummy","dummy","dummy","dummy"]
+    },
+    "Women": {
+        "Featured": ["Women New Releases", "Bestsellers", "dummy","dummy","dummy"],
+        "Bestsellers": ["dummy","dummy","dummy","dummy"],
+        "Members Exclusive": ["dummy","dummy","dummy","dummy"]
+    },
+    "Kids": {
+        "Featured": ["Kids New Releases", "Bestsellers", "dummy","dummy","dummy"],
+        "Bestsellers": ["dummy","dummy","dummy","dummy"],
+        "Members Exclusive": ["dummy","dummy","dummy","dummy"]
+    }
     
 }

@@ -8,10 +8,18 @@ const Navbar = () => {
     const [navHover, setNavHover] = useState(false);
     const [hoveredCategory ,setHoveredCategory] = useState(null);
 
-    const handleHover = (e) => {
+    const updateState = (newValue) => {
+        setNavHover(newValue);
+    };
+
+    const handleMouseEnter = (e) => {
         const category = e.target.textContent;
         setHoveredCategory(category);
-        setNavHover(!navHover);
+        setNavHover(true);
+    }
+
+    const handleMouseLeave = () => {
+        setNavHover(false);
     }
 
 
@@ -21,13 +29,13 @@ const Navbar = () => {
             <div className="nav-left">
                 <img src={LogoSvg} className="w-[58.25px]"/>
             </div>
-            <div className="nav-center flex font-medium gap-5">
-                <h1 onMouseEnter={handleHover}>New & Featured</h1>
-                <h1 onMouseEnter={handleHover}>Men</h1>
-                <h1 onMouseEnter={handleHover}>Women</h1>
-                <h1 onMouseEnter={handleHover}>Kids</h1>
+            <div className="nav-center flex font-medium">
+                <h1 onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className=" max-h-[60px] px-[12px] pt-[10px] pb-[16px] border-2 border-white hover:border-b-black">New & Featured</h1>
+                <h1 onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className=" max-h-[60px] px-[12px] pt-[10px] pb-[16px] border-2 border-white hover:border-b-black">Men</h1>
+                <h1 onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className=" max-h-[60px] px-[12px] pt-[10px] pb-[16px] border-2 border-white hover:border-b-black">Women</h1>
+                <h1 onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className=" max-h-[60px] px-[12px] pt-[10px] pb-[16px] border-2 border-white hover:border-b-black">Kids</h1>
 
-                {navHover && <NavDropdown hover={handleHover} category={hoveredCategory}/>}
+                {navHover && <NavDropdown updateState={updateState}  category={hoveredCategory}/>}
             </div>
             <div className="nav-right flex gap-[40px]">
                 

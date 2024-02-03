@@ -1,13 +1,26 @@
 import navdropdown from "../../utility/navdropdown.json";
 
 
-const NavDropdown = ({hover, category}) => {
+const NavDropdown = ({updateState, category}) => {
+
+    const myobj = navdropdown[category];
+    const keyArray = Object.keys(navdropdown[category]);
+    console.log(keyArray);
+
     return (
-        <div onMouseLeave={hover}  className="w-[100vw] flex flex-col justify-center items-center absolute left-0 top-[60px] h-[400px] bg-white">
+        <div onMouseEnter={() => {updateState(true)}} onMouseLeave={() => {updateState(false)}}  className="w-[100vw] flex gap-10 justify-center pt-10 absolute left-0 top-[60px] h-[400px] bg-white">
             
-            {navdropdown[category] && navdropdown[category].map((element,index) => 
-                <h3 key={index}>{element}</h3>)
-            }
+            {myobj && keyArray.map((key, index) => (
+                <div key={index}>
+                    {myobj[key].map((item, ind) => (
+                        <p key={ind}>
+                            {item}
+                        </p>
+                    ))}
+                </div>
+            ))}
+
+            
         </div>
     )
 };
