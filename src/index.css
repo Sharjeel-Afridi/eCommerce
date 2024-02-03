@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 body{
+    font-family: 'Geologica','sans-serif';
     background-color: #f4f4f5;
 }
 
