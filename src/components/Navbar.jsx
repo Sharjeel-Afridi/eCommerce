@@ -2,11 +2,15 @@ import SeachSvg from "../assets/searchicon.svg";
 import LogoSvg from "../assets/nike.svg";
 import CartPng from "../assets/cart.png";
 import UserPng from "../assets/user.png";
+import NavDropdown from "./NavDropdown";
 import { useState } from "react";
 const Navbar = () => {
     const [navHover, setNavHover] = useState(false);
+    const [hoveredCategory ,setHoveredCategory] = useState(null);
 
-    const handleHover = () => {
+    const handleHover = (e) => {
+        const category = e.target.textContent;
+        setHoveredCategory(category);
         setNavHover(!navHover);
     }
 
@@ -18,26 +22,12 @@ const Navbar = () => {
                 <img src={LogoSvg} className="w-[58.25px]"/>
             </div>
             <div className="nav-center flex font-medium gap-5">
-                <h1>New & Featured</h1>
+                <h1 onMouseEnter={handleHover}>New & Featured</h1>
                 <h1 onMouseEnter={handleHover}>Men</h1>
-                <h1>Women</h1>
-                <h1>Kids</h1>
+                <h1 onMouseEnter={handleHover}>Women</h1>
+                <h1 onMouseEnter={handleHover}>Kids</h1>
 
-                {navHover && <div onMouseLeave={handleHover} className="w-[100vw] flex flex-col justify-center items-center absolute left-0 top-[60px] h-[400px] bg-white">
-                    <p>Featured</p>
-
-                    <p>Jordan</p>
-
-                    <p>Shoes</p>
-
-                    <p>Clothing</p>
-
-                    <p>Accessories and Equipment</p>
-
-                    <p>Shop By Sport</p>
-
-                    <p>Shop By Brand</p>
-                </div>}
+                {navHover && <NavDropdown hover={handleHover} category={hoveredCategory}/>}
             </div>
             <div className="nav-right flex gap-[40px]">
                 

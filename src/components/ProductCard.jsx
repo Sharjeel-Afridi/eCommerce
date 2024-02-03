@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import ShoeImg from "../assets/airforce1.png";
 
 const ProductCard = () => {
