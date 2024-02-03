@@ -19,11 +19,11 @@ const Navbar = () => {
             </div>
             <div className="nav-center flex font-medium gap-5">
                 <h1>New & Featured</h1>
-                <h1 onMouseEnter={handleHover} onMouseLeave={handleHover}>Men</h1>
+                <h1 onMouseEnter={handleHover}>Men</h1>
                 <h1>Women</h1>
                 <h1>Kids</h1>
 
-                {navHover && <div className="w-[100vw] flex flex-col justify-center items-center absolute left-0 top-[60px] h-[400px] bg-white">
+                {navHover && <div onMouseLeave={handleHover} className="w-[100vw] flex flex-col justify-center items-center absolute left-0 top-[60px] h-[400px] bg-white">
                     <p>Featured</p>
 
                     <p>Jordan</p>
