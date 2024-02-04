@@ -12,8 +12,9 @@ const NavDropdown = ({updateState, category}) => {
             
             {myobj && keyArray.map((key, index) => (
                 <div key={index}>
+                    <h1>{key}</h1>
                     {myobj[key].map((item, ind) => (
-                        <p key={ind}>
+                        <p key={ind} className="font-light text-slate-500">
                             {item}
                         </p>
                     ))}

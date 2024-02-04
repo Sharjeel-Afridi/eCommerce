@@ -22,7 +22,7 @@ const Navbar = () => {
         setNavHover(false);
     }
 
-
+    const dropdownStyles = "max-h-[60px] px-[12px] pt-[10px] pb-[16px] border-2 border-white hover:border-b-black";
     return(
         <>
         <nav className="flex w-[100%] justify-between items-center pl-[16px] pr-[14px]  bg-white max-h-[60px]">
@@ -30,10 +30,18 @@ const Navbar = () => {
                 <img src={LogoSvg} className="w-[58.25px]"/>
             </div>
             <div className="nav-center flex font-medium">
-                <h1 onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className=" max-h-[60px] px-[12px] pt-[10px] pb-[16px] border-2 border-white hover:border-b-black">New & Featured</h1>
-                <h1 onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className=" max-h-[60px] px-[12px] pt-[10px] pb-[16px] border-2 border-white hover:border-b-black">Men</h1>
-                <h1 onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className=" max-h-[60px] px-[12px] pt-[10px] pb-[16px] border-2 border-white hover:border-b-black">Women</h1>
-                <h1 onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className=" max-h-[60px] px-[12px] pt-[10px] pb-[16px] border-2 border-white hover:border-b-black">Kids</h1>
+                <h1 onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className={dropdownStyles}>
+                    New & Featured
+                </h1>
+                <h1 onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className={dropdownStyles}>
+                    Men
+                </h1>
+                <h1 onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className={dropdownStyles}>
+                    Women
+                </h1>
+                <h1 onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className={dropdownStyles}>
+                    Kids
+                </h1>
 
                 {navHover && <NavDropdown updateState={updateState}  category={hoveredCategory}/>}
             </div>

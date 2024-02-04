@@ -2,22 +2,34 @@
     "New & Featured": {
         "Featured": ["New Releases", "Bestsellers", "dummy","dummy","dummy"],
         "Bestsellers": ["dummy","dummy","dummy","dummy"],
-        "Members Exclusive": ["dummy","dummy","dummy","dummy"]
+        "Members Exclusive": ["dummy","dummy","dummy","dummy"],
+        "Shoes": ["dummy","dummy","dummy","dummy"],
+        "Clothings": ["dummy","dummy","dummy","dummy"],
+        "Shop by Sports": ["dummy","dummy","dummy","dummy"]
     },
     "Men": {
-        "Featured": ["Men New Releases", "Bestsellers", "dummy","dummy","dummy"],
+        "Featured": ["Men New Releases", "dummy","dummy","dummy"],
         "Bestsellers": ["dummy","dummy","dummy","dummy"],
-        "Members Exclusive": ["dummy","dummy","dummy","dummy"]
+        "Members Exclusive": ["dummy","dummy","dummy","dummy"],
+        "Shoes": ["dummy","dummy","dummy","dummy"],
+        "Clothings": ["dummy","dummy","dummy","dummy"],
+        "Shop by Sports": ["dummy","dummy","dummy","dummy"]
     },
     "Women": {
         "Featured": ["Women New Releases", "Bestsellers", "dummy","dummy","dummy"],
         "Bestsellers": ["dummy","dummy","dummy","dummy"],
-        "Members Exclusive": ["dummy","dummy","dummy","dummy"]
+        "Members Exclusive": ["dummy","dummy","dummy","dummy"],
+        "Shoes": ["dummy","dummy","dummy","dummy"],
+        "Clothings": ["dummy","dummy","dummy","dummy"],
+        "Shop by Sports": ["dummy","dummy","dummy","dummy"]
     },
     "Kids": {
         "Featured": ["Kids New Releases", "Bestsellers", "dummy","dummy","dummy"],
         "Bestsellers": ["dummy","dummy","dummy","dummy"],
-        "Members Exclusive": ["dummy","dummy","dummy","dummy"]
+        "Members Exclusive": ["dummy","dummy","dummy","dummy"],
+        "Shoes": ["dummy","dummy","dummy","dummy"],
+        "Clothings": ["dummy","dummy","dummy","dummy"],
+        "Shop by Sports": ["dummy","dummy","dummy","dummy"]
     }
     
 }
