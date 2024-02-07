@@ -1,5 +1,4 @@
 import Featured from "./components/Featured";
-import Navbar from "./components/Navbar";
 import ProductSection from "./components/ProductSection";
 
 

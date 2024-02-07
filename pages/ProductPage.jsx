@@ -1,17 +1,23 @@
-import shoe from "../src/assets/product-img.png";
+/* eslint-disable react/no-unescaped-entities */
+import { useParams } from "react-router-dom";
+import useFetch from "../utility/useFetch";
 const ProductPage = () => {
+    const {id} = useParams();
+    const index = parseInt(id) - 1;
     const sizechartstyle= "flex items-center justify-center font-light border-[1.2px] border-slate-300 py-3 w-[7rem] rounded-md hover:border-black"
-
+    const apiResponce = useFetch();
+   
+    console.log(apiResponce)
     return (
         
         <div className="flex items-start bg-white">
-            {/* <div className="h-[10vh] w-[5vw]"></div> */}
+            
             <div className="relative flex justify-around items-center">
                 <div className=" w-[55%] ">
-                    {/* <div className="w-[10rem] h-[100vh]">
-
-                    </div> */}
-                    <img src={shoe} className="rounded-md absolute top-[5rem] left-[3rem] w-[45%]"/>
+                    <img 
+                        src={apiResponce !== null ? (apiResponce.items[index].image) : (<h1>Loading</h1>)} 
+                        className="rounded-md absolute top-[5rem] left-[3rem] w-[45%]"
+                    />
                 </div>
                 
                 <div className="flex flex-col h-[100%] mt-20  w-[50%] px-20  ">
@@ -20,13 +26,13 @@ const ProductPage = () => {
 
                     {/* NAME */}
                     <div className="mb-5">
-                        <h1 className="font-semibold text-[2.3rem]">Nike Air Force 1'07</h1>
+                        <h1 className="font-semibold text-[2.3rem]">{apiResponce !== null && (apiResponce.items[index].name)}</h1>
                         <h2 className="font-normal text-[1.3rem] text-gray-800">Men's Shoes</h2>
                     </div>
                     
 
                     {/* MRP */}
-                    <h3 className="font-light text-[1.6rem]">MRP : $299</h3>
+                    <h3 className="font-light text-[1.6rem]">MRP : ${apiResponce != null && (apiResponce.items[index].price)}</h3>
                     <p className="text-slate-600 font-extralight text-[1rem]">incl. of taxes</p>
 
 
@@ -37,13 +43,11 @@ const ProductPage = () => {
                             <span className="mb-2 text-slate-500 cursor-pointer">Size Guide</span>
                         </div>
                         <div className="flex flex-wrap gap-2">
-                            <div className={sizechartstyle}>UK 10</div>
-                            <div className={sizechartstyle}>UK 10</div>
-                            <div className={sizechartstyle}>UK 10</div>
-                            <div className={sizechartstyle}>UK 10</div>
-                            <div className={sizechartstyle}>UK 10</div>
-                            <div className={sizechartstyle}>UK 10</div>
-                            <div className={sizechartstyle}>UK 10</div>
+                            
+                            {apiResponce != null && (apiResponce.items[index].sizes.map(item => (
+                                <div key={index} className={sizechartstyle}>{item}</div>
+                            )))
+                            }
                         </div>
                     </div>
 

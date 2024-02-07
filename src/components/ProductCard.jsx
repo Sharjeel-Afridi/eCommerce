@@ -1,14 +1,13 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-unescaped-entities */
-import ShoeImg from "../assets/airforce1.png";
 
-const ProductCard = ({name, category, price}) => {
+const ProductCard = ({name, category, price, shoeimg}) => {
     return (
         <div className="min-h-[300px] min-w-[300px] max-w-[400px] flex flex-col flex-none mb-4 text-[1.1rem] bg-white">
-            <img src={ShoeImg} className=""/>
-            <h3 className="font-semibold mt-2 ">{name}</h3>
-            <span className="text-slate-500 font-normal">{category}</span>
-            <span className="font-semibold mt-1">{price}</span>
+            <img src={shoeimg} />
+            <h3 className="font-normal text-[1rem] mt-2 ">{name}</h3>
+            <span className="text-slate-500 font-light">{category}</span>
+            <span className="font-normal mt-3">MRP: ${price}</span>
         </div>
     )
 };
