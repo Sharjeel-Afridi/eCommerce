@@ -8,7 +8,11 @@ const NavDropdown = ({updateState, category}) => {
     console.log(keyArray);
 
     return (
-        <div onMouseEnter={() => {updateState(true)}} onMouseLeave={() => {updateState(false)}}  className="w-[100vw] flex gap-10 justify-center pt-10 absolute left-0 top-[60px] h-[400px] bg-white">
+        <div 
+            onMouseEnter={() => {updateState(true)}} 
+            onMouseLeave={() => {updateState(false)}}  
+            className="w-[100vw] flex gap-10 justify-center pt-10 absolute left-0 top-[55px] h-[400px] bg-white z-10"
+        >
             
             {myobj && keyArray.map((key, index) => (
                 <div key={index}>

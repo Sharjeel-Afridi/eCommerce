@@ -3,6 +3,7 @@ import LogoSvg from "../assets/nike.svg";
 import CartPng from "../assets/cart.png";
 import UserPng from "../assets/user.png";
 import NavDropdown from "./NavDropdown";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 const Navbar = () => {
     const [navHover, setNavHover] = useState(false);
@@ -24,7 +25,7 @@ const Navbar = () => {
 
     const dropdownStyles = "max-h-[60px] px-[12px] pt-[10px] pb-[16px] border-2 border-white hover:border-b-black";
     return(
-        <>
+    
         <nav className="flex w-[100%] justify-between items-center pl-[16px] pr-[14px]  bg-white max-h-[60px]">
             <div className="nav-left">
                 <img src={LogoSvg} className="w-[58.25px]"/>
@@ -58,9 +59,9 @@ const Navbar = () => {
                 </div>
 
 
-                <div className="flex justify-center items-center size-[40px] hover:bg-[#f4f4f5] hover:rounded-full">
-                <img src={CartPng} className="size-[24px] cursor-pointer "/>
-                </div>
+                <Link to={"/cart"} className="flex justify-center items-center size-[40px] hover:bg-[#f4f4f5] hover:rounded-full">
+                    <img src={CartPng} className="size-[24px] cursor-pointer "/>
+                </Link>
 
 
                 <div className="flex justify-center items-center size-[40px] hover:bg-[#f4f4f5] hover:rounded-full ">
@@ -69,7 +70,7 @@ const Navbar = () => {
                 
             </div>
         </nav>
-        </>
+
     )
 };
 
