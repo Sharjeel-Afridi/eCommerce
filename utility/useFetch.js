@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 
 const useFetch = () => {
     const [apiResponse, setApiResponse] = useState(null);
+    const[loading , setLoading] = useState(true);
+
     const apiURL = "https://sharjeel-afridi.github.io/eCommerceJson/api.json";
     useEffect(() => {
         async function apifetch(){
@@ -13,12 +15,14 @@ const useFetch = () => {
                 setTimeout(() => {
                     apifetch();
                 }, 5000);
-            }
+            }finally {
+                setLoading(false);
+              }
         }
 
         apifetch();
     },[]);
-    return apiResponse;
+    return {apiResponse, loading};
 };
 
 export default useFetch;
