@@ -56,7 +56,7 @@ const ProductPage = () => {
 
                     {/* DESCRIPTION */}
                     <div className="description font-extralight text-slate-700 py-10">
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi quod aliquam sequi. Aut, sed illum a voluptatem voluptas inventore beatae dolorem ducimus. Sed unde reiciendis ea labore, mollitia nulla minus doloremque rerum optio eligendi culpa blanditiis, nesciunt provident officiis id soluta eius voluptatem. Est repellat rerum provident ducimus numquam architecto dolorem illo molestias consectetur dolore dolores natus, aliquam quaerat enim dolor maxime unde quod, minus, quasi eius porro sunt cupiditate mollitia eveniet. Provident amet veritatis quo incidunt, enim numquam! Dicta aut molestiae delectus. Eum voluptatibus porro dolorum? Aut, ducimus dolorem corrupti, minima vitae dignissimos doloremque illo beatae quos facere eos.</p>
+                    <p>{apiResponce != null && (apiResponce.items[index].description)}</p>
                     </div>
                 </div>
                 
