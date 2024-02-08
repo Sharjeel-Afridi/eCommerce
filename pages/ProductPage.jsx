@@ -1,10 +1,20 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useParams } from "react-router-dom";
 import useFetch from "../utility/useFetch";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addItems } from "../utility/cartSlice";
 const ProductPage = () => {
+    const dispatch = useDispatch();
     const {id} = useParams();
     const index = parseInt(id) - 1;
     const sizechartstyle= "flex items-center justify-center font-light border-[1.2px] border-slate-300 py-3 w-[7rem] rounded-md hover:border-black"
+    
+    const handleClick = (item) => {
+        dispatch(addItems(item));
+        console.log(item)
+    }
+
     const {apiResponse} = useFetch();
     if (!apiResponse) {
         return <div>Loading...</div>;
@@ -53,7 +63,12 @@ const ProductPage = () => {
                         </div>
                     </div>
 
-                    <button className="bg-black text-white py-4 rounded-full mt-10 hover:bg-gray-600">Add To Cart</button>
+                    <button 
+                        className="bg-black text-white py-4 rounded-full mt-10 hover:bg-gray-600"
+                        onClick={() => handleClick(apiResponse.items[index])}
+                    >
+                        Add To Cart
+                    </button>
                     <button className="border-2  py-4 rounded-full mt-10 hover:border-black">Favourite</button>
 
                     {/* DESCRIPTION */}

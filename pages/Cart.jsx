@@ -1,13 +1,22 @@
 import CartCard from "../src/components/CartCard";
+import { useSelector, useDispatch } from "react-redux";
+import { clearCart } from "../utility/cartSlice";
 
 const Cart = () => {
+    const cartItems = useSelector((store) => store.cart.items);
+    console.log(cartItems);
+    // const dispatch = useDispatch();
+    // const handleClick = () => {
+    //     dispatch(clearCart())
+    // }
     return(
         <div className="flex bg-white justify-center">
             <div className="flex flex-col">
-                <CartCard />
-                <CartCard />
-                <CartCard />
-                <CartCard />
+                {cartItems.map((element, index) => (
+                    
+                <CartCard key={index} image={element.image} name={element.name} price={element.price} size={"UK-10"}/>
+                    
+                ))}
             </div>
             <div className="flex flex-col px-[8px] w-[30vw] text-[16px]">
                 <h1 className="text-[24px] mb-[24px]">Summary</h1>
