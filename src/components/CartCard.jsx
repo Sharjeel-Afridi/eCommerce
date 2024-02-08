@@ -15,10 +15,10 @@ const CartCard = ({image, name, price, size}) => {
                 <div className="w-[13vw]">
                     <img src={image} />
                 </div>
-                <div className="flex flex-col pl-5 pb-2 font-light text-gray-500">
+                <div className="w-[20vw] flex flex-col pl-5 pb-2 font-light text-gray-500">
                     <h1 className="font-medium text-black">{name}</h1>
                     <h3>Mens Shoes</h3>
-                    <div className="flex justify-between gap-4 pt-2">
+                    <div className="flex justify-between  pt-2">
                         <p>{size}</p>
                         <p>Quantity: 1</p>
                     </div>

@@ -5,7 +5,12 @@ import { useEffect } from "react";
 
 const Cart = () => {
     const cartItems = useSelector((store) => store.cart.items);
-    
+    let cartPrices = 0;
+    let total = 0;
+    cartItems.map(element => {
+        cartPrices += parseInt(element.price)
+        total = cartPrices + 40;
+    })
     console.log(cartItems);
     // const dispatch = useDispatch();
     // const handleClick = () => {
@@ -25,7 +30,7 @@ const Cart = () => {
                 <div className="">
                     <div className="flex justify-between font-light mb-[8px]">
                         <p>Subtotal</p>
-                        <p>$140</p>
+                        <p>${cartPrices}</p>
                     </div>
                     <div className="flex justify-between font-light mb-[8px]">
                         <p>Estimated Delivery & Handling</p>
@@ -33,7 +38,7 @@ const Cart = () => {
                     </div>
                     <div className="py-4 border-y-[0.667px] border-gray-200 my-[12px] flex justify-between">
                         <p>Total</p>
-                        <p>$ 180</p>
+                        <p>$ {total}</p>
                     </div>
                     <button className="bg-black text-white w-[100%] py-[18px] rounded-full hover:bg-gray-800">Checkout</button>
                 </div>
