@@ -1,9 +1,11 @@
 import CartCard from "../src/components/CartCard";
 import { useSelector, useDispatch } from "react-redux";
 import { clearCart } from "../utility/cartSlice";
+import { useEffect } from "react";
 
 const Cart = () => {
     const cartItems = useSelector((store) => store.cart.items);
+    
     console.log(cartItems);
     // const dispatch = useDispatch();
     // const handleClick = () => {

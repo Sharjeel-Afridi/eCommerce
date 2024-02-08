@@ -1,18 +1,32 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useParams } from "react-router-dom";
 import useFetch from "../utility/useFetch";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { addItems } from "../utility/cartSlice";
 const ProductPage = () => {
     const dispatch = useDispatch();
     const {id} = useParams();
     const index = parseInt(id) - 1;
     const sizechartstyle= "flex items-center justify-center font-light border-[1.2px] border-slate-300 py-3 w-[7rem] rounded-md hover:border-black"
+    const cartItems = useSelector(store => store.cart.items);
+    let cartIds = [];
     
+    
+    cartItems.map(element => {
+        cartIds.push(element.id);
+    })
+   
+
     const handleClick = (item) => {
-        dispatch(addItems(item));
-        console.log(item)
+        if(!cartIds.includes(item.id)){
+           
+            dispatch(addItems(item));
+           
+        }else{
+            alert("Already in cart")
+        }
+        
     }
 
     const {apiResponse} = useFetch();
