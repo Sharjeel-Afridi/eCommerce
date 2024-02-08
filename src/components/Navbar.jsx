@@ -27,9 +27,9 @@ const Navbar = () => {
     return(
     
         <nav className="flex w-[100%] justify-between items-center pl-[16px] pr-[14px]  bg-white max-h-[60px]">
-            <div className="nav-left">
+            <Link to={"/"} className="nav-left">
                 <img src={LogoSvg} className="w-[58.25px]"/>
-            </div>
+            </Link>
             <div className="nav-center flex font-medium">
                 <h1 onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className={dropdownStyles}>
                     New & Featured
