@@ -3,8 +3,10 @@ import { useParams } from "react-router-dom";
 import useFetch from "../utility/useFetch";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addItems } from "../utility/cartSlice";
+import { addItems, addSize } from "../utility/cartSlice";
 const ProductPage = () => {
+
+    const [sizeSelected, setSizeSelected] = useState('');
     const dispatch = useDispatch();
     const {id} = useParams();
     const index = parseInt(id) - 1;
@@ -18,15 +20,24 @@ const ProductPage = () => {
     })
    
 
-    const handleClick = (item) => {
-        if(!cartIds.includes(item.id)){
-           
-            dispatch(addItems(item));
-           
-        }else{
-            alert("Already in cart")
+    const handleClick = (item, size) => {
+        if (sizeSelected !== ''){
+            if(!cartIds.includes(item.id)){
+                dispatch(addItems(item));
+                dispatch(addSize(size));
+               
+            }else{
+                alert("Already in cart")
+            }
+        }
+        else{
+            alert("Please select a size first!")
         }
         
+    }
+
+    const handleSizeClick = (element) => {
+        setSizeSelected(element);
     }
 
     const {apiResponse} = useFetch();
@@ -71,7 +82,7 @@ const ProductPage = () => {
                         <div className="flex flex-wrap gap-2">
                             
                             {apiResponse != null && (apiResponse.items[index].sizes.map(item => (
-                                <div key={index} className={sizechartstyle}>{item}</div>
+                                <div key={index} className={sizechartstyle} onClick={() => handleSizeClick(item)}>{item}</div>
                             )))
                             }
                         </div>
@@ -79,7 +90,7 @@ const ProductPage = () => {
 
                     <button 
                         className="bg-black text-white py-4 rounded-full mt-10 hover:bg-gray-600"
-                        onClick={() => handleClick(apiResponse.items[index])}
+                        onClick={() => handleClick(apiResponse.items[index], sizeSelected)}
                     >
                         Add To Cart
                     </button>

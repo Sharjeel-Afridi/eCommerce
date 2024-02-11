@@ -5,6 +5,7 @@ import { useEffect } from "react";
 
 const Cart = () => {
     const cartItems = useSelector((store) => store.cart.items);
+    const sizes = useSelector((store) => store.cart.sizes);
     let cartPrices = 0;
     let total = 0;
     cartItems.map(element => {
@@ -21,7 +22,7 @@ const Cart = () => {
             <div className="flex flex-col">
                 {cartItems.map((element, index) => (
                     
-                <CartCard key={index} image={element.image} name={element.name} price={element.price} size={"UK-10"}/>
+                <CartCard key={index} image={element.image} name={element.name} price={element.price} size={sizes[index]}/>
                     
                 ))}
             </div>
