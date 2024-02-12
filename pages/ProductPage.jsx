@@ -3,30 +3,29 @@ import { useParams } from "react-router-dom";
 import useFetch from "../utility/useFetch";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addItems, addSize } from "../utility/cartSlice";
+import { addItems, addSize, addQuantity } from "../utility/cartSlice";
 const ProductPage = () => {
 
     const [sizeSelected, setSizeSelected] = useState('');
+    const [selectedSizes, setSelectedSizes] = useState(false);
     const dispatch = useDispatch();
     const {id} = useParams();
     const index = parseInt(id) - 1;
-    const sizechartstyle= "flex items-center justify-center font-light border-[1.2px] border-slate-300 py-3 w-[7rem] rounded-md hover:border-black"
-    const cartItems = useSelector(store => store.cart.items);
-    let cartIds = [];
+    // const sizechartstyle=
+    // const cartItems = useSelector(store => store.cart.items);
+    const cartIds = useSelector((store) => store.cart.ids);
     
-    
-    cartItems.map(element => {
-        cartIds.push(element.id);
-    })
    
 
     const handleClick = (item, size) => {
         if (sizeSelected !== ''){
+            const index = cartIds.findIndex(item => item === id);
             if(!cartIds.includes(item.id)){
                 dispatch(addItems(item));
                 dispatch(addSize(size));
-               
+                dispatch(addQuantity(index));
             }else{
+                dispatch(addQuantity(index))
                 alert("Already in cart")
             }
         }
@@ -38,6 +37,7 @@ const ProductPage = () => {
 
     const handleSizeClick = (element) => {
         setSizeSelected(element);
+        setSelectedSizes(true);
     }
 
     const {apiResponse} = useFetch();
@@ -81,8 +81,14 @@ const ProductPage = () => {
                         </div>
                         <div className="flex flex-wrap gap-2">
                             
-                            {apiResponse != null && (apiResponse.items[index].sizes.map(item => (
-                                <div key={index} className={sizechartstyle} onClick={() => handleSizeClick(item)}>{item}</div>
+                            {apiResponse != null && (apiResponse.items[index].sizes.map((item, index) => (
+                                <div 
+                                    key={index} 
+                                    className=  {`flex items-center justify-center font-light border-[1.2px] border-slate-300 py-3 w-[7rem] rounded-md hover:border-black ${selectedSizes[item] ? 'border-black' : ''}` }
+                                    onClick={() => handleSizeClick(item)}
+                                >
+                                    {item}
+                                </div>
                             )))
                             }
                         </div>

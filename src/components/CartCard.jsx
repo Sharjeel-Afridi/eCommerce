@@ -1,7 +1,7 @@
 import useFetch from "../../utility/useFetch";
 
 
-const CartCard = ({image, name, price, size}) => {
+const CartCard = ({image, name, price, size, quantity}) => {
     
     const { apiResponse } = useFetch();
     if (!apiResponse) {
@@ -20,7 +20,7 @@ const CartCard = ({image, name, price, size}) => {
                     <h3>Mens Shoes</h3>
                     <div className="flex justify-between  pt-2">
                         <p>{size}</p>
-                        <p>Quantity: 1</p>
+                        <p>Quantity: {quantity}</p>
                     </div>
                 </div>
             </div>
