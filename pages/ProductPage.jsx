@@ -7,25 +7,28 @@ import { addItems, addSize, addQuantity } from "../utility/cartSlice";
 const ProductPage = () => {
 
     const [sizeSelected, setSizeSelected] = useState('');
-    const [selectedSizes, setSelectedSizes] = useState(false);
+    const [selectedQuantity, setSelectedQuantity] = useState(1);
+    
     const dispatch = useDispatch();
     const {id} = useParams();
     const index = parseInt(id) - 1;
-    // const sizechartstyle=
-    // const cartItems = useSelector(store => store.cart.items);
+    
     const cartIds = useSelector((store) => store.cart.ids);
     
    
 
-    const handleClick = (item, size) => {
+    const handleClick = (item) => {
         if (sizeSelected !== ''){
-            const index = cartIds.findIndex(item => item === id);
+
+            let newitem = {...item};
+            newitem.sizes = sizeSelected;
+            newitem.quantity = selectedQuantity;
+
             if(!cartIds.includes(item.id)){
-                dispatch(addItems(item));
-                dispatch(addSize(size));
-                dispatch(addQuantity(index));
+
+                dispatch(addItems(newitem));
+
             }else{
-                dispatch(addQuantity(index))
                 alert("Already in cart")
             }
         }
@@ -37,14 +40,21 @@ const ProductPage = () => {
 
     const handleSizeClick = (element) => {
         setSizeSelected(element);
-        setSelectedSizes(true);
+        
+    }
+
+    const handleQuantityChange = (quantity) => {
+        if(quantity < 1){
+            quantity = 1;
+        }
+        setSelectedQuantity(quantity);
     }
 
     const {apiResponse} = useFetch();
     if (!apiResponse) {
         return <div>Loading...</div>;
     }
-    console.log(apiResponse)
+    
     return (
         
         <div className="flex items-start bg-white">
@@ -81,22 +91,33 @@ const ProductPage = () => {
                         </div>
                         <div className="flex flex-wrap gap-2">
                             
-                            {apiResponse != null && (apiResponse.items[index].sizes.map((item, index) => (
+                            {apiResponse != null && (apiResponse.items[index].sizes.map((size, index) => (
                                 <div 
                                     key={index} 
-                                    className=  {`flex items-center justify-center font-light border-[1.2px] border-slate-300 py-3 w-[7rem] rounded-md hover:border-black ${selectedSizes[item] ? 'border-black' : ''}` }
-                                    onClick={() => handleSizeClick(item)}
+                                    className=  {`flex items-center justify-center font-light border-[1.2px] border-slate-300 py-3 w-[7rem] rounded-md ${sizeSelected === size ? 'border-slate-900' : ''}  hover:border-black ` }
+                                    onClick={() => handleSizeClick(size)}
                                 >
-                                    {item}
+                                    {size}
                                 </div>
                             )))
                             }
                         </div>
                     </div>
 
+                    {/* QUANTITY */}
+                    <div className="flex justify-start items-center mt-5 gap-5">
+                        <h3>Quantity:</h3>
+                        <input 
+                            className="w-10 text-[1.1rem]"
+                            type="number"
+                            min="1"
+                            value={selectedQuantity}
+                            onChange={(e) => handleQuantityChange(e.target.value)}
+                        />
+                    </div>
                     <button 
                         className="bg-black text-white py-4 rounded-full mt-10 hover:bg-gray-600"
-                        onClick={() => handleClick(apiResponse.items[index], sizeSelected)}
+                        onClick={() => handleClick(apiResponse.items[index], sizeSelected, selectedQuantity)}
                     >
                         Add To Cart
                     </button>

@@ -4,7 +4,6 @@ const cartSlice = createSlice({
     name: 'cart',
     initialState: {
         items: [],
-        sizes: [],
         quantity: [],
         ids: []
     },
@@ -14,13 +13,6 @@ const cartSlice = createSlice({
             state.ids.push(action.payload.id);
             state.quantity.push(1);
             console.log(Array.from(state.items))
-        },
-        addSize: (state, action) => {
-            state.sizes.push(action.payload);
-        },
-        addQuantity: (state, action) => {
-            let { index } = action.payload;
-            console.log("quantity added")
         },
         removeItem: (state) => {
             state.items.pop();
