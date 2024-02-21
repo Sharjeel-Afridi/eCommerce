@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import useFetch from "../utility/useFetch";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addItems, addSize, addQuantity } from "../utility/cartSlice";
+import { addItems } from "../utility/cartSlice";
 const ProductPage = () => {
 
     const [sizeSelected, setSizeSelected] = useState('');
@@ -59,11 +59,10 @@ const ProductPage = () => {
         
         <div className="flex items-start bg-white">
             
-            <div className="relative flex justify-around items-center">
-                <div className=" w-[50%] ml-4">
+            <div className="relative flex justify-around ">
+                <div className=" w-[50%] ml-4 mt-20 overflow-hidden rounded-md">
                     <img 
                         src={apiResponse !== null ? (apiResponse.items[index].image) : (<h1>Loading</h1>)} 
-                        className="rounded-md "
                     />
                 </div>
                 

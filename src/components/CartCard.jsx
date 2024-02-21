@@ -1,6 +1,6 @@
 import useFetch from "../../utility/useFetch";
-
-
+import Delete from "../assets/delete.svg";
+import Heart from "../assets/heart.png";
 const CartCard = ({image, name, price, size, quantity}) => {
     
     const { apiResponse } = useFetch();
@@ -21,6 +21,10 @@ const CartCard = ({image, name, price, size, quantity}) => {
                     <div className="flex justify-between  pt-2">
                         <p>{size}</p>
                         <p>Quantity: {quantity}</p>
+                    </div>
+                    <div className="flex gap-4 my-3">
+                        <img src={Heart} className="h-[25px]"/>
+                        <img src={Delete} className="h-[25px]"/>
                     </div>
                 </div>
             </div>
