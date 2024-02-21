@@ -93,7 +93,7 @@ const ProductPage = () => {
                             {apiResponse != null && (apiResponse.items[index].sizes.map((size, index) => (
                                 <div 
                                     key={index} 
-                                    className=  {`flex items-center justify-center font-light border-[1.2px] border-slate-300 py-3 w-[7rem] rounded-md ${sizeSelected === size ? 'border-slate-900' : ''}  hover:border-black ` }
+                                    className=  {`flex items-center justify-center font-light border-[1.2px] border-slate-300 py-3 w-[7rem] rounded-md cursor-pointer ${sizeSelected === size ? 'border-slate-900' : ''}  hover:border-black ` }
                                     onClick={() => handleSizeClick(size)}
                                 >
                                     {size}

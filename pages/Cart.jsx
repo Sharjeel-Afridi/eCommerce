@@ -21,7 +21,7 @@ const Cart = () => {
             <div className="flex flex-col">
                 {cartItems.map((element, index) => (
                     
-                <CartCard key={index} image={element.image} name={element.name} price={element.price} size={element.sizes} quantity={element.quantity}/>
+                <CartCard key={index} id={element.id} image={element.image} name={element.name} price={element.price} size={element.sizes} quantity={element.quantity}/>
                     
                 ))}
             </div>

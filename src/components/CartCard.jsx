@@ -1,14 +1,24 @@
+import { useDispatch } from "react-redux";
 import useFetch from "../../utility/useFetch";
 import Delete from "../assets/delete.svg";
 import Heart from "../assets/heart.png";
-const CartCard = ({image, name, price, size, quantity}) => {
+import { removeItem } from "../../utility/cartSlice";
+
+
+
+const CartCard = ({id, image, name, price, size, quantity}) => {
     
+    const dispatch = useDispatch();
+
     const { apiResponse } = useFetch();
     if (!apiResponse) {
         return <div>Loading...</div>;
     }
     console.log("cart card rendered")
 
+    const handleDelete = () => {
+        dispatch(removeItem(id))
+    }
     return (
         <div className="flex justify-between bg-white w-[45vw] m-4 text-[1rem] border-b-[0.667px] py-[24px] px-[8px] border-gray-200">
             <div className="flex">
@@ -24,7 +34,11 @@ const CartCard = ({image, name, price, size, quantity}) => {
                     </div>
                     <div className="flex gap-4 my-3">
                         <img src={Heart} className="h-[25px]"/>
-                        <img src={Delete} className="h-[25px]"/>
+                        <img 
+                            src={Delete} 
+                            className="h-[25px] cursor-pointer"
+                            onClick={handleDelete}
+                        />
                     </div>
                 </div>
             </div>
