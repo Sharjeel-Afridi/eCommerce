@@ -1,6 +1,7 @@
 import SeachSvg from "../assets/searchicon.svg";
 import LogoSvg from "../assets/nike.svg";
 import CartPng from "../assets/cart.png";
+import WishlistPng from "../assets/heart.png";
 import UserPng from "../assets/user.png";
 import NavDropdown from "./NavDropdown";
 import { Link } from "react-router-dom";
@@ -59,6 +60,10 @@ const Navbar = () => {
                 </div>
 
 
+                <Link to={"/wishlist"} className="flex justify-center items-center size-[40px] hover:bg-[#f4f4f5] hover:rounded-full">
+                    <img src={WishlistPng} className="size-[24px] cursor-pointer "/>
+                </Link>
+            
                 <Link to={"/cart"} className="flex justify-center items-center size-[40px] hover:bg-[#f4f4f5] hover:rounded-full">
                     <img src={CartPng} className="size-[24px] cursor-pointer "/>
                 </Link>

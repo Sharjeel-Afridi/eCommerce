@@ -23,8 +23,9 @@ const cartSlice = createSlice({
             state.items.length = 0;
         },
         addToWishlist: (state, action) => {
-            state.wishlist.push(action.payload)
+            state.wishlist.push(action.payload);
             state.wishlistIds.push(action.payload.id);
+            console.log(Array.from(state.wishlist));
         }
     }
 });

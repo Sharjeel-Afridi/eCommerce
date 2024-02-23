@@ -1,12 +1,13 @@
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import Navbar from './components/Navbar.jsx';
 import ProductPage from '../pages/ProductPage.jsx';
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import './index.css';
 import Cart from '../pages/Cart.jsx';
+import Wishlist from '../pages/Wishlist.jsx';
 import {Provider} from "react-redux";
 import appStore from "../utility/appStore.js"
+import './index.css';
 
 
 
@@ -31,6 +32,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />
+      },
+      {
+        path:"/wishlist",
+        element: <Wishlist />
       }
     ]
   }

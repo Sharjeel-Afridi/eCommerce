@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useParams } from "react-router-dom";
 import useFetch from "../utility/useFetch";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addItems, addToWishlist } from "../utility/cartSlice";
 const ProductPage = () => {
@@ -13,9 +13,9 @@ const ProductPage = () => {
     const {id} = useParams();
     const index = parseInt(id) - 1;
     
-    const cartIds = useSelector((store) => store.cart.ids);
+    const cartIds = useSelector((store) => store.cart.cartIds);
     
-   
+   console.log(cartIds);
 
     const handleClick = (item) => {
         if (sizeSelected !== ''){
@@ -50,10 +50,12 @@ const ProductPage = () => {
         setSelectedQuantity(quantity);
     }
 
-    const handleWishlistClick = (item, size) => {
-        let newitem = {...item};
-        newitem.sizes = sizeSelected;
-        dispatch(addToWishlist(newitem))
+    const handleWishlistClick = (item) => {
+        // let newitem = {...item};
+        // newitem.sizes = sizeSelected;
+        console.log("1");
+        dispatch(addToWishlist(item))
+        console.log("2");
     }
 
     const {apiResponse} = useFetch();
@@ -120,15 +122,20 @@ const ProductPage = () => {
                             onChange={(e) => handleQuantityChange(e.target.value)}
                         />
                     </div>
+                    {/* ADD TO CART */}
                     <button 
                         className="bg-black text-white py-4 rounded-full mt-10 hover:bg-gray-600"
                         onClick={() => handleClick(apiResponse.items[index])}
                     >
                         Add To Cart
                     </button>
+                    {/* ADD TO WISHLIST */}
                     <button 
                         className="border-2  py-4 rounded-full mt-10 hover:border-black"
-                        onClick={() => handleWishlistClick(apiResponse.items[index], sizeSelected)}>Favourite</button>
+                        onClick={() => handleWishlistClick(apiResponse.items[index])}
+                    >
+                        Favourite
+                    </button>
 
                     {/* DESCRIPTION */}
                     <div className="description font-extralight text-slate-700 py-10">
