@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import useFetch from "../utility/useFetch";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addItems } from "../utility/cartSlice";
+import { addItems, addToWishlist } from "../utility/cartSlice";
 const ProductPage = () => {
 
     const [sizeSelected, setSizeSelected] = useState('');
@@ -48,6 +48,12 @@ const ProductPage = () => {
             quantity = 1;
         }
         setSelectedQuantity(quantity);
+    }
+
+    const handleWishlistClick = (item, size) => {
+        let newitem = {...item};
+        newitem.sizes = sizeSelected;
+        dispatch(addToWishlist(newitem))
     }
 
     const {apiResponse} = useFetch();
@@ -116,11 +122,13 @@ const ProductPage = () => {
                     </div>
                     <button 
                         className="bg-black text-white py-4 rounded-full mt-10 hover:bg-gray-600"
-                        onClick={() => handleClick(apiResponse.items[index], sizeSelected, selectedQuantity)}
+                        onClick={() => handleClick(apiResponse.items[index])}
                     >
                         Add To Cart
                     </button>
-                    <button className="border-2  py-4 rounded-full mt-10 hover:border-black">Favourite</button>
+                    <button 
+                        className="border-2  py-4 rounded-full mt-10 hover:border-black"
+                        onClick={() => handleWishlistClick(apiResponse.items[index], sizeSelected)}>Favourite</button>
 
                     {/* DESCRIPTION */}
                     <div className="description font-extralight text-slate-700 py-10">
