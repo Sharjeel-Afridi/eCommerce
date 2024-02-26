@@ -10,10 +10,6 @@ const CartCard = ({id, image, name, price, size, quantity}) => {
     
     const dispatch = useDispatch();
 
-    const { apiResponse } = useFetch();
-    if (!apiResponse) {
-        return <div>Loading...</div>;
-    }
     console.log("cart card rendered")
 
     const handleDelete = () => {
